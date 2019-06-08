@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">That Resume App</string>
+    <string name="title_about_me">AboutMe</string>
+    <string name="title_skills">Skills</string>
+</resources>
