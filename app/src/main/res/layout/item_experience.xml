@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content">
+
+    <View
+            android:id="@+id/milestoneView"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginTop="28dp"
+            android:background="@color/colorPrimary"
+            android:elevation="2dp"
+            app:layout_constraintEnd_toEndOf="@+id/timelineView"
+            app:layout_constraintStart_toStartOf="@+id/timelineView"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <View
+            android:id="@+id/timelineView"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+            android:id="@+id/tvDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@color/colorPrimary"
+            android:minWidth="140dp"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@+id/milestoneView"
+            app:layout_constraintStart_toEndOf="@+id/milestoneView"
+            app:layout_constraintTop_toTopOf="@+id/milestoneView"
+            tools:text="Jun 2012 - Aug 2017"/>
+
+    <TextView
+            android:id="@+id/tvJobTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@+id/tvDuration"
+            app:layout_constraintTop_toBottomOf="@+id/tvDuration"
+            tools:text="Android Developer"/>
+
+    <TextView
+            android:id="@+id/tvJobDescription"
+            android:layout_width="361dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@+id/tvJobTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvJobTitle"
+            tools:text="A long job description goes here"/>
+
+    <TextView
+            android:id="@+id/tvCompanyName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivCompanyImage"
+            app:layout_constraintEnd_toStartOf="@+id/ivCompanyImage"
+            app:layout_constraintTop_toTopOf="@+id/ivCompanyImage"
+            tools:text="Google"/>
+
+    <ImageView
+            android:id="@+id/ivCompanyImage"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginEnd="16dp"
+            android:adjustViewBounds="true"
+            app:layout_constraintBottom_toBottomOf="@+id/tvJobTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvDuration"
+            app:srcCompat="@color/colorAccent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

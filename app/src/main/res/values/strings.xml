@@ -2,4 +2,6 @@
     <string name="app_name">That Resume App</string>
     <string name="title_about_me">AboutMe</string>
     <string name="title_skills">Skills</string>
+    <string name="tryAgain">Try Again</string>
+    <string name="title_experience">Experience</string>
 </resources>

@@ -7,8 +7,8 @@
             android:title="@string/title_about_me"/>
 
     <item
-            android:id="@+id/tab_skills"
+            android:id="@+id/tab_experience"
             android:icon="@drawable/ic_dashboard_black_24dp"
-            android:title="@string/title_skills"/>
+            android:title="@string/title_experience"/>
 
 </menu>

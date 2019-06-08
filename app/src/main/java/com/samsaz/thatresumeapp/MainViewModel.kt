@@ -13,11 +13,11 @@ class MainViewModel @Inject constructor(): ViewModel() {
     fun changePage(@IdRes itemId: Int) {
         when(itemId) {
             R.id.tab_about_me -> currentPageLiveData.value = MainViewState("AboutMe", Page.AboutMe)
-            R.id.tab_skills -> currentPageLiveData.value = MainViewState("Skills", Page.Skills)
+            R.id.tab_experience -> currentPageLiveData.value = MainViewState("Experience", Page.Experience)
         }
     }
 
     enum class Page {
-        AboutMe, Skills
+        AboutMe, Experience
     }
 }
