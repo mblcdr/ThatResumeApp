@@ -7,7 +7,9 @@ import com.samsaz.thatresumeapp.base.ui.ViewLoadingState
 import com.samsaz.thatresumeapp.model.Experience
 import javax.inject.Inject
 
-class ExperienceViewModel @Inject constructor() : ViewModel(), ListViewStateProvider<Experience> {
+class ExperienceViewModel @Inject constructor(
+    val dataSource: ExperienceAssetDataSource
+) : ViewModel(), ListViewStateProvider<Experience> {
     override val listData: MutableLiveData<List<Experience>> = MutableLiveData()
     override val loadingState: MutableLiveData<ViewLoadingState> = MutableLiveData()
 
@@ -16,14 +18,7 @@ class ExperienceViewModel @Inject constructor() : ViewModel(), ListViewStateProv
     }
 
     override fun refresh() {
-        val experience = Experience(
-            "Jun 2012 - Aug 2017",
-            "Android Developer",
-            "I worked on some fancy apps in this role",
-            "Google",
-            null
-        )
-        listData.postValue(listOf(experience, experience))
+        listData.postValue(dataSource.getData())
         loadingState.postValue(ViewLoadingState.Success)
     }
 
