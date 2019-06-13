@@ -1,11 +1,9 @@
 package com.samsaz.thatresumeapp.experience
 
 import android.content.res.AssetManager
+import com.samsaz.shared.util.MyJsonParser
+import com.samsaz.shared.util.Result
 import com.samsaz.thatresumeapp.model.Experience
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.Types
-import okio.Okio
 import javax.inject.Inject
 
 /**
@@ -14,16 +12,13 @@ import javax.inject.Inject
  */
 
 class ExperienceAssetDataSource @Inject constructor(
-    val moshi: Moshi,
+    val jsonParser: MyJsonParser,
     val assets: AssetManager
 ): ExperienceDataSource {
 
-    override fun getData(): List<Experience> {
-        val buffer = Okio.buffer(Okio.source(assets.open("experiences.json")))
-        val type = Types.newParameterizedType(List::class.java, Experience::class.java)
-        val adapter: JsonAdapter<List<Experience>> = moshi.adapter(type)
-        val list = adapter.fromJson(buffer)
-        return list ?: emptyList()
+    override suspend fun getData(): Result<List<Experience>> {
+        val inputStream = assets.open("experiences.json")
+        return jsonParser.parseList(inputStream, Experience::class.java)
     }
 
 }

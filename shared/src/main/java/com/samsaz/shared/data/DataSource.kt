@@ -1,4 +1,6 @@
-package com.samsaz.shared.di.data
+package com.samsaz.shared.data
+
+import com.samsaz.shared.util.Result
 
 /**
  * Copyright 2019 Oddrun co.
@@ -6,5 +8,5 @@ package com.samsaz.shared.di.data
  */
 
 interface DataSource<T> {
-    fun getData(): T
+    suspend fun getData(): Result<T>
 }

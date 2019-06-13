@@ -1,6 +1,6 @@
 package com.samsaz.thatresumeapp.di
 
-import com.samsaz.shared.di.module.MoshiModule
+import com.samsaz.shared.di.module.SharedModule
 import com.samsaz.shared.di.viewmodel.ViewModelModule
 import com.samsaz.thatresumeapp.MyApplication
 import dagger.BindsInstance
@@ -14,7 +14,8 @@ import javax.inject.Singleton
     AppModule::class,
     ViewModelModule::class,
     ActivityBindingModule::class,
-    MoshiModule::class])
+    SharedModule::class]
+)
 interface AppComponent: AndroidInjector<MyApplication> {
 
     @Component.Factory
