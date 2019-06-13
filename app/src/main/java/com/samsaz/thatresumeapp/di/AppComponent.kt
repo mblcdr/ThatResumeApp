@@ -3,6 +3,7 @@ package com.samsaz.thatresumeapp.di
 import com.samsaz.shared.di.module.SharedModule
 import com.samsaz.shared.di.viewmodel.ViewModelModule
 import com.samsaz.thatresumeapp.MyApplication
+import com.samsaz.thatresumeapp.data.ApiModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -14,6 +15,7 @@ import javax.inject.Singleton
     AppModule::class,
     ViewModelModule::class,
     ActivityBindingModule::class,
+    ApiModule::class,
     SharedModule::class]
 )
 interface AppComponent: AndroidInjector<MyApplication> {
