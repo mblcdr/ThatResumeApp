@@ -8,6 +8,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.samsaz.thatresumeapp.MainViewModel.Page
 import com.samsaz.thatresumeapp.aboutme.AboutMeFragment
 import com.samsaz.thatresumeapp.experience.ExperienceFragment
+import com.samsaz.thatresumeapp.skills.SkillFragment
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
@@ -37,6 +38,7 @@ class MainActivity : DaggerAppCompatActivity() {
         val fragment = when(state.page) {
             Page.AboutMe -> AboutMeFragment()
             Page.Experience -> ExperienceFragment()
+            Page.Skills -> SkillFragment()
         }
         supportFragmentManager.beginTransaction().replace(R.id.container_layout, fragment).commit()
     }

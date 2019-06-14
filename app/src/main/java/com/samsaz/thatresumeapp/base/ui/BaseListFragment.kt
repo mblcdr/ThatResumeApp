@@ -72,7 +72,7 @@ abstract class BaseListFragment<T> : DaggerFragment(), SwipeRefreshLayout.OnRefr
         getListViewStateProvider()?.refresh()
     }
 
-    protected fun getLayoutManager(): RecyclerView.LayoutManager {
+    protected open fun getLayoutManager(): RecyclerView.LayoutManager {
         return LinearLayoutManager(context, RecyclerView.VERTICAL, false)
     }
 

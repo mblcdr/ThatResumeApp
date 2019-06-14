@@ -11,4 +11,9 @@
             android:icon="@drawable/ic_dashboard_black_24dp"
             android:title="@string/title_experience"/>
 
+    <item
+        android:id="@+id/tab_skills"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/title_skills" />
+
 </menu>

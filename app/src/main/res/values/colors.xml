@@ -10,4 +10,5 @@
     <color name="cardBackgroundColor">#FFFFFF</color>
     <color name="sectionBackground">#FFFFFF</color>
     <color name="pageBackground">#EEEEEE</color>
+    <color name="defaultRibbonColor">#DDDDDD</color>
 </resources>
