@@ -1,20 +1,20 @@
-package com.samsaz.thatresumeapp.experience
+package com.samsaz.thatresumeapp.aboutme
 
 import androidx.lifecycle.MutableLiveData
 import com.samsaz.shared.util.BaseViewModel
 import com.samsaz.shared.util.CoroutineDispatchers
-import com.samsaz.thatresumeapp.base.ui.ListViewStateProvider
 import com.samsaz.thatresumeapp.base.ui.ViewLoadingState
-import com.samsaz.thatresumeapp.model.Experience
+import com.samsaz.thatresumeapp.base.ui.ViewStateProvider
+import com.samsaz.thatresumeapp.model.AboutMe
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class ExperienceViewModel @Inject constructor(
+class AboutMeViewModel @Inject constructor(
     dispatchers: CoroutineDispatchers,
-    private val repository: ExperienceRepository
-) : BaseViewModel(dispatchers), ListViewStateProvider<Experience> {
+    private val repository: AboutMeRepository
+) : BaseViewModel(dispatchers), ViewStateProvider<AboutMe> {
 
-    override val liveData: MutableLiveData<List<Experience>> = MutableLiveData()
+    override val liveData: MutableLiveData<AboutMe> = MutableLiveData()
     override val loadingLiveData: MutableLiveData<ViewLoadingState> = MutableLiveData()
 
     init {
@@ -26,5 +26,4 @@ class ExperienceViewModel @Inject constructor(
             repository.loadData(liveData, loadingLiveData)
         }
     }
-
 }

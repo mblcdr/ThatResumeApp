@@ -2,8 +2,8 @@ package com.samsaz.thatresumeapp.base.ui
 
 import androidx.lifecycle.MutableLiveData
 
-interface ListViewStateProvider<T> {
-    val liveData: MutableLiveData<List<T>>
+interface ViewStateProvider<T> {
+    val liveData: MutableLiveData<T>
     val loadingLiveData: MutableLiveData<ViewLoadingState>
 
     fun refresh()

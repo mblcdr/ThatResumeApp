@@ -35,10 +35,10 @@ abstract class BaseListFragment<T> : DaggerFragment(), SwipeRefreshLayout.OnRefr
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         getListViewStateProvider()?.apply {
-            listData.observe(viewLifecycleOwner, Observer {
+            liveData.observe(viewLifecycleOwner, Observer {
                 setData(it)
             })
-            loadingState.observe(viewLifecycleOwner, Observer {
+            loadingLiveData.observe(viewLifecycleOwner, Observer {
                 setLoadingState(it)
             })
         }
@@ -54,7 +54,7 @@ abstract class BaseListFragment<T> : DaggerFragment(), SwipeRefreshLayout.OnRefr
         state ?: return
 
         when (state) {
-            is ViewLoadingState.Loading -> refreshLayout.isRefreshing = false
+            is ViewLoadingState.Loading -> refreshLayout.isRefreshing = true
             is ViewLoadingState.Success -> refreshLayout.isRefreshing = false
             is ViewLoadingState.Error -> {
                 refreshLayout.isRefreshing = false

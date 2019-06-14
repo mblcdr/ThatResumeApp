@@ -1,0 +1,12 @@
+{
+  "name": "Hamid Moazzami",
+  "imageLink": "https://s.gravatar.com/avatar/51ffe79e8afc81e497b52516ee9dc93b?s=400",
+  "occupation": "Mobile App Developer",
+  "socialLinks": [
+    {
+      "image": null,
+      "link": "http://www.google.com"
+    }
+  ],
+  "aboutMe": "I love the challenges that come with application development. Overcoming design difficulties and solving notorious bugs, all for one end. To make better apps."
+}

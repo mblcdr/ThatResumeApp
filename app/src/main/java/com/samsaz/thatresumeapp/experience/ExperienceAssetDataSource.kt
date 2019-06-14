@@ -21,7 +21,7 @@ class ExperienceAssetDataSource @Inject constructor(
         if (cacheMode == CacheMode.Network) {
             throw IllegalArgumentException("AssetDataStore can't provide network data")
         }
-        val inputStream = assets.open("experiences.json")
+        val inputStream = assets.open("jsonData/experiences.json")
         return jsonParser.parseList(inputStream, Experience::class.java)
     }
 
