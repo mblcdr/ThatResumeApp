@@ -1,4 +1,4 @@
-package com.samsaz.thatresumeapp.data
+package com.samsaz.shared.data
 
 enum class CacheMode {
     Cache, Network

@@ -1,5 +1,6 @@
 package com.samsaz.thatresumeapp.data
 
+import com.samsaz.shared.data.CacheMode
 import com.samsaz.thatresumeapp.model.Experience
 import retrofit2.http.GET
 import retrofit2.http.Tag

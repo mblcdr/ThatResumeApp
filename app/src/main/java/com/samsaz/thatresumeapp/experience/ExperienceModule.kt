@@ -7,6 +7,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
+import javax.inject.Named
 
 @Module
 internal abstract class ExperienceModule {
@@ -19,4 +20,14 @@ internal abstract class ExperienceModule {
     @IntoMap
     @ViewModelKey(ExperienceViewModel::class)
     internal abstract fun bindViewModel(viewModel: ExperienceViewModel): ViewModel
+
+    @Binds
+    @Named("remote")
+    internal abstract fun bindRemoteDataSource(dataSource: ExperienceRemoteDataSource):
+            ExperienceDataSource
+
+    @Binds
+    @Named("assets")
+    internal abstract fun bindAssetsDataSource(dataSource: ExperienceAssetDataSource):
+            ExperienceDataSource
 }

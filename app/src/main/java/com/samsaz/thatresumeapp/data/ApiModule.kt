@@ -2,6 +2,7 @@ package com.samsaz.thatresumeapp.data
 
 import android.content.Context
 import androidx.annotation.Nullable
+import com.samsaz.shared.data.CacheMode
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides

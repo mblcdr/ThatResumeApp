@@ -8,5 +8,5 @@ import com.samsaz.shared.util.Result
  */
 
 interface DataSource<T> {
-    suspend fun getData(): Result<T>
+    suspend fun getData(cacheMode: CacheMode): Result<T>
 }
