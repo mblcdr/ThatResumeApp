@@ -4,5 +4,10 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="text_important">#222222</color>
+    <color name="text_default">#444444</color>
     <color name="text_subtitle">#666666</color>
+    <color name="cardBorderColor">#DDDDDD</color>
+    <color name="cardBackgroundColor">#FFFFFF</color>
+    <color name="sectionBackground">#FFFFFF</color>
+    <color name="pageBackground">#EEEEEE</color>
 </resources>

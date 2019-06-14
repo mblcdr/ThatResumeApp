@@ -8,7 +8,8 @@
     app:cardCornerRadius="4dp"
     app:cardElevation="0dp"
     app:contentPadding="20dp"
-    app:strokeColor="@color/colorPrimary"
+    app:cardBackgroundColor="@color/cardBackgroundColor"
+    app:strokeColor="@color/cardBorderColor"
     app:strokeWidth="1dp">
 
     <LinearLayout
@@ -27,8 +28,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/text_important"
-            android:textSize="18sp"
+            android:layout_marginTop="20dp"
             android:textStyle="bold"
+            android:textSize="24sp"
             tools:text="John Doe" />
 
         <TextView
@@ -36,6 +38,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/text_subtitle"
+            android:layout_marginTop="5dp"
+            android:textSize="16sp"
             tools:text="Mobile App Developer" />
 
         <LinearLayout
