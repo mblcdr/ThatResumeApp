@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.samsaz.thatresumeapp.R
 import com.samsaz.thatresumeapp.model.AboutMe
+import com.samsaz.thatresumeapp.util.GlideApp
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.item_about_me.*
 import kotlinx.android.synthetic.main.item_user_info.*
@@ -19,6 +21,7 @@ class AboutMeFragment : DaggerFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     lateinit var viewModel: AboutMeViewModel
+    private val circleCrop = CircleCrop()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_about_me, container, false)
@@ -38,5 +41,6 @@ class AboutMeFragment : DaggerFragment() {
         tvName.text = data.name
         tvOccupation.text = data.occupation
         tvAboutMe.text = data.aboutMe
+        GlideApp.with(ivImage).load(data.imageLink).transform(circleCrop).into(ivImage)
     }
 }
