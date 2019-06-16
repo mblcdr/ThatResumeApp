@@ -1,21 +1,25 @@
 package com.samsaz.thatresumeapp.data
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.MutableLiveData
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.*
 import com.samsaz.shared.data.CacheMode
 import com.samsaz.shared.data.DataSource
 import com.samsaz.shared.util.Result
 import com.samsaz.thatresumeapp.base.ui.ViewLoadingState
-import com.samsaz.thatresumeapp.util.testGetValue
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 
+
 class BaseCacheRepositoryTest {
+
+    companion object {
+        const val AssetsValue = 1
+        const val RemoteCacheValue = 2
+        const val RemoteValue = 3
+    }
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -48,44 +52,90 @@ class BaseCacheRepositoryTest {
     @Test
     fun whenRemoteFailsAssetsLoadNonTheLessTest() {
         val remoteDataSource = createDataSource(error(), error())
-        val assetsDataSource = createDataSource(success(1), error())
+        val assetsDataSource = createDataSource(success(AssetsValue), error())
         val baseRepository = createRepository(remoteDataSource, assetsDataSource)
+        val listener = mock<DataStateListener<Int>>()
 
-        val dataLiveData = MutableLiveData<Int>()
-        val loadingLiveData = MutableLiveData<ViewLoadingState>()
+        runBlocking { baseRepository.loadData(listener) }
 
-        runBlocking { baseRepository.loadData(dataLiveData, loadingLiveData) }
-
-        assertEquals(1, dataLiveData.testGetValue())
-        assertTrue(loadingLiveData.testGetValue() is ViewLoadingState.Error)
+        verify(listener).onDataChange(1)
     }
 
     @Test
     fun ifCacheExistsItIsPreferredOverAssetsTest() {
-        val remoteDataSource = createDataSource(success(2), error())
-        val assetsDataSource = createDataSource(success(1), error())
+        val remoteDataSource = createDataSource(success(RemoteCacheValue), error())
+        val assetsDataSource = createDataSource(success(AssetsValue), error())
         val baseRepository = createRepository(remoteDataSource, assetsDataSource)
+        val listener = mock<DataStateListener<Int>>()
 
-        val dataLiveData = MutableLiveData<Int>()
-        val loadingLiveData = MutableLiveData<ViewLoadingState>()
+        runBlocking { baseRepository.loadData(listener) }
 
-        runBlocking { baseRepository.loadData(dataLiveData, loadingLiveData) }
-
-        assertEquals(2, dataLiveData.testGetValue())
+        verify(listener).onDataChange(2)
     }
 
     @Test
-    fun ifRemoteDataExistsItPrevails() {
-        val remoteDataSource = createDataSource(success(2), success(3))
-        val assetsDataSource = createDataSource(success(1), error())
+    fun ifRemoteDataExistsItPrevailsWhenCached() {
+        val remoteDataSource = createDataSource(success(RemoteCacheValue), success(RemoteValue))
+        val assetsDataSource = createDataSource(success(AssetsValue), error())
         val baseRepository = createRepository(remoteDataSource, assetsDataSource)
+        val listener = mock<DataStateListener<Int>>()
 
-        val dataLiveData = MutableLiveData<Int>()
-        val loadingLiveData = MutableLiveData<ViewLoadingState>()
 
-        runBlocking { baseRepository.loadData(dataLiveData, loadingLiveData) }
+        runBlocking { baseRepository.loadData(listener) }
 
-        assertEquals(3, dataLiveData.testGetValue())
-        assertTrue(loadingLiveData.testGetValue() is ViewLoadingState.Success)
+        argumentCaptor<Int> {
+            verify(listener, times(2)).onDataChange(capture())
+            assertEquals(RemoteCacheValue, firstValue)
+            assertEquals(RemoteValue, secondValue)
+        }
+    }
+
+    @Test
+    fun ifRemoteDataExistsItPrevailsWhenNotCached() {
+        val remoteDataSource = createDataSource(error(), success(RemoteValue))
+        val assetsDataSource = createDataSource(success(AssetsValue), error())
+        val baseRepository = createRepository(remoteDataSource, assetsDataSource)
+        val listener = mock<DataStateListener<Int>>()
+
+
+        runBlocking { baseRepository.loadData(listener) }
+
+        argumentCaptor<Int> {
+            verify(listener, times(2)).onDataChange(capture())
+            assertEquals(AssetsValue, firstValue)
+            assertEquals(RemoteValue, secondValue)
+        }
+    }
+
+    @Test
+    fun viewStateIsErrorIfRemoteFetchFails() {
+        val remoteDataSource = createDataSource(error(), error())
+        val assetsDataSource = createDataSource(success(AssetsValue), error())
+        val baseRepository = createRepository(remoteDataSource, assetsDataSource)
+        val listener = mock<DataStateListener<Int>>()
+
+        runBlocking { baseRepository.loadData(listener) }
+
+        argumentCaptor<ViewLoadingState> {
+            verify(listener, times(2)).onStateChange(capture())
+            assertTrue(firstValue is ViewLoadingState.Loading)
+            assertTrue(secondValue is ViewLoadingState.Error)
+        }
+    }
+
+    @Test
+    fun viewStateIsSuccessIfRemoteFetchedSuccessfully() {
+        val remoteDataSource = createDataSource(success(RemoteCacheValue), success(RemoteValue))
+        val assetsDataSource = createDataSource(success(AssetsValue), error())
+        val baseRepository = createRepository(remoteDataSource, assetsDataSource)
+        val listener = mock<DataStateListener<Int>>()
+
+        runBlocking { baseRepository.loadData(listener) }
+
+        argumentCaptor<ViewLoadingState> {
+            verify(listener, times(2)).onStateChange(capture())
+            assertTrue(firstValue is ViewLoadingState.Loading)
+            assertTrue(secondValue is ViewLoadingState.Success)
+        }
     }
 }

@@ -1,6 +1,5 @@
 package com.samsaz.thatresumeapp.data
 
-import androidx.lifecycle.MutableLiveData
 import com.samsaz.shared.data.CacheMode
 import com.samsaz.shared.data.DataSource
 import com.samsaz.shared.util.Result
@@ -11,26 +10,25 @@ abstract class BaseCacheRepository<T> {
     protected abstract val assetsDataSource: DataSource<T>
 
     suspend fun loadData(
-        dataLiveData: MutableLiveData<T>,
-        loadingLiveData: MutableLiveData<ViewLoadingState>
+        dataStateListener: DataStateListener<T>
     ) {
-        loadingLiveData.value = ViewLoadingState.Loading
+        dataStateListener.onStateChange(ViewLoadingState.Loading)
         val cachedResult = remoteDataSource.getData(CacheMode.Cache)
         if (cachedResult is Result.Success) {
-            dataLiveData.value = cachedResult.data
+            dataStateListener.onDataChange(cachedResult.data)
         } else {
             val assetsResult = assetsDataSource.getData(CacheMode.Cache)
             if (assetsResult is Result.Success) {
-                dataLiveData.value = assetsResult.data
+                dataStateListener.onDataChange(assetsResult.data)
             }
         }
 
         val networkResult = remoteDataSource.getData(CacheMode.Network)
         if (networkResult is Result.Success) {
-            dataLiveData.value = networkResult.data
-            loadingLiveData.value = ViewLoadingState.Success
+            dataStateListener.onDataChange(networkResult.data)
+            dataStateListener.onStateChange(ViewLoadingState.Success)
         } else {
-            loadingLiveData.value = ViewLoadingState.Error("Connection Error")
+            dataStateListener.onStateChange(ViewLoadingState.Error("Connection Error"))
         }
     }
 }
