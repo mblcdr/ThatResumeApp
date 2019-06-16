@@ -1,6 +1,5 @@
 package com.samsaz.thatresumeapp.data
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockitokotlin2.*
 import com.samsaz.shared.data.CacheMode
 import com.samsaz.shared.data.DataSource
@@ -9,7 +8,6 @@ import com.samsaz.thatresumeapp.base.ui.ViewLoadingState
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
-import org.junit.Rule
 import org.junit.Test
 
 
@@ -20,9 +18,6 @@ class BaseCacheRepositoryTest {
         const val RemoteCacheValue = 2
         const val RemoteValue = 3
     }
-
-    @get:Rule
-    var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private fun createDataSource(
         cacheResult: Result<Int>,
