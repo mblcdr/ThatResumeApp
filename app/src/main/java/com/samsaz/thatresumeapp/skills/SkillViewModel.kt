@@ -7,6 +7,8 @@ import com.samsaz.thatresumeapp.base.ui.ListViewStateProvider
 import com.samsaz.thatresumeapp.base.ui.ViewLoadingState
 import com.samsaz.thatresumeapp.data.DataStateListener
 import com.samsaz.thatresumeapp.model.Skill
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,6 +19,9 @@ class SkillViewModel @Inject constructor(
 
     override val liveData: MutableLiveData<List<Skill>> = MutableLiveData()
     override val loadingLiveData: MutableLiveData<ViewLoadingState> = MutableLiveData()
+    private var latestData: List<Skill> = emptyList()
+    private var filter: String? = null
+    private var lastFilterJob: Job? = null
 
     init {
         refresh()
@@ -29,10 +34,26 @@ class SkillViewModel @Inject constructor(
     }
 
     override fun onDataChange(data: List<Skill>) {
-        liveData.value = data
+        latestData = data
+        filterList(false)
     }
 
     override fun onStateChange(state: ViewLoadingState) {
         loadingLiveData.value = state
+    }
+
+    private fun filterList(debounce: Boolean) {
+        lastFilterJob?.cancel()
+        lastFilterJob = launch {
+            if (debounce)
+                delay(100)
+            val filteredList = repository.filterData(latestData, dispatchers, filter)
+            liveData.value = filteredList
+        }
+    }
+
+    fun onSearchQuery(newText: String?) {
+        filter = newText
+        filterList(true)
     }
 }
