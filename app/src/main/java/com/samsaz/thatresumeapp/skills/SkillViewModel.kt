@@ -17,6 +17,10 @@ class SkillViewModel @Inject constructor(
     private val repository: SkillRepository
 ) : BaseViewModel(dispatchers), ListViewStateProvider<Skill>, DataStateListener<List<Skill>> {
 
+    companion object {
+        const val DEBOUNCE_TIME = 100L
+    }
+
     override val liveData: MutableLiveData<List<Skill>> = MutableLiveData()
     override val loadingLiveData: MutableLiveData<ViewLoadingState> = MutableLiveData()
     private var latestData: List<Skill> = emptyList()
@@ -46,7 +50,7 @@ class SkillViewModel @Inject constructor(
         lastFilterJob?.cancel()
         lastFilterJob = launch {
             if (debounce)
-                delay(100)
+                delay(DEBOUNCE_TIME)
             val filteredList = repository.filterData(latestData, dispatchers, filter)
             liveData.value = filteredList
         }
