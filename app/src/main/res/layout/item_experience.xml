@@ -54,11 +54,12 @@
 
     <TextView
         android:id="@+id/tvJobDescription"
-        android:layout_width="361dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         android:textColor="@color/text_subtitle"
         android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/ivCompanyImage"
         app:layout_constraintStart_toStartOf="@+id/tvJobTitle"
         app:layout_constraintTop_toBottomOf="@+id/tvJobTitle"
         tools:text="A long job description goes here" />
