@@ -4,6 +4,7 @@ import com.samsaz.shared.util.CoroutineDispatchers
 import com.samsaz.thatresumeapp.data.BaseCacheRepository
 import com.samsaz.thatresumeapp.model.Skill
 import kotlinx.coroutines.withContext
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -22,12 +23,12 @@ class SkillRepository @Inject constructor(
             val level3List = mutableListOf<Skill>()
             val level2List = mutableListOf<Skill>()
             val level1List = mutableListOf<Skill>()
-
+            val f = filter.toLowerCase(Locale.US)
             for (skill in data) {
                 when {
-                    skill.name.startsWith(filter) -> level3List.add(skill)
-                    skill.name.contains(filter) -> level2List.add(skill)
-                    skill.description.contains(filter) -> level1List.add(skill)
+                    skill.name.toLowerCase(Locale.US).startsWith(f) -> level3List.add(skill)
+                    skill.name.toLowerCase(Locale.US).contains(f) -> level2List.add(skill)
+                    skill.description.toLowerCase(Locale.US).contains(f) -> level1List.add(skill)
                 }
             }
             level3List.addAll(level2List)
