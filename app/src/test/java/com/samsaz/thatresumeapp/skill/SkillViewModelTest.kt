@@ -112,7 +112,7 @@ class SkillViewModelTest {
 
         assertEquals(testList, vm.liveData.testGetValue())
 
-        Thread.sleep(SkillViewModel.DEBOUNCE_TIME / 2)
+        Thread.sleep(SkillViewModel.DEBOUNCE_TIME / 3 * 2)
 
         assertEquals(listOf(testList[0]), vm.liveData.testGetValue())
     }
