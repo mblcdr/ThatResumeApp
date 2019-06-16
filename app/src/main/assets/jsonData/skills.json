@@ -1,18 +1,50 @@
 [
   {
-    "name": "RxJava2",
-    "description": "Everything that can be done! Everything that can be done! Everything that can be done!"
+    "name": "Android Development",
+    "description": "Been doing android development for more than 6 years now."
   },
   {
-    "name": "RxJava2",
-    "description": "Everything that can be done! Everything that can be done!"
+    "name": "iOS Development",
+    "description": "It's a year and a half that I've being coding iOS applications."
   },
   {
-    "name": "RxJava2",
-    "description": "Everything that can be done!"
+    "name": "Reactive Programming",
+    "description": "Started reactive programming with RxJava1. I use a varied range of operators like debounce, throttle, flatmap, combineLatest and... I understand concepts like backpressure or subjects. Now I'm using RxJava2 and RxSwift."
   },
   {
-    "name": "RxJava2",
-    "description": "Everything that can be done! Everything that can be done! Everything that can be done! Everything that can be done! Everything that can be done!"
+    "name": "Architecture - MV*",
+    "description": "I am familiar with MVC, MVP, MVVM, and MVRx. I used them in production applications and also in side projects. I also know about the principle of Clean architecture. I like clean code and always consider concision and readability while writing code."
+  },
+  {
+    "name": "Design Patterns",
+    "description": "I use most of the popular ones in my applications. To name a few: Singleton, Builder, Delegation, Facade, Factory, Lazy, Decorator, Adapter, Observer, State, Pool, etc..."
+  },
+  {
+    "name": "Testing",
+    "description": "I believe in writing testable code and I support that by writing a different kind of test. Unit tests, UI test, integration tests, etc...\nI use libraries like JUnit, Mockito and Espresso"
+  },
+  {
+    "name": "Dependency Injection - DI",
+    "description": "I am a big fan of DI because it leads to more testable and modular code. I use Dagger2 for it on the Android side. On the iOS side, I've been experimenting with Needle"
+  },
+  {
+    "name": "User Experience - UX",
+    "description": "Working with product owners and designers for 5 years, gave me practical knowledge in the UX department. I also used tools like analytics and A/B Testing to analyze and improve upon the experience of the user and also increase revenue."
+  },
+  {
+    "name": "Android libraries",
+    "description": "I have experience working with famous libraries such as Retrofit, OkHttp, Okio, Glide, Picasso, ButterKnife, EventBus, Firebase, Fabric, Crashlytics, RxJava, Leakcanary, Dagger2, Gson, Moshi, Architecture components, Realm, ExoPlayer, and..."
+  },
+  {
+    "name": "iOS libraries",
+    "description": "I have experience working with famous libraries such as Alamofire, Moya, Kingfisher, Marshal, SwiftMessages, Needle, RxSwift, RxCocoa, Fabric, Crashlytics, Firebase, etc..."
+  },
+  {
+    "name": "Billing - Revenue - Ad",
+    "description": "I worked on apps with different monetizing plans. I have experience implementing in-app-billing, AdMob, native ads and also alternative methods of payment. I have experience maximizing revenue using A/B Testing and analytics."
+  },
+  {
+    "name": "Database - Disk",
+    "description": "I am familiar with the paradigms of writing data to disk. I have experience working with SQLite, Realm, DBFlow, Sqlbrite, CoreData, SugarRecord, etc... "
   }
 ]
