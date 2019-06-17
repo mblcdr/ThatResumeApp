@@ -37,6 +37,7 @@ abstract class BaseListFragment<T> : DaggerFragment(), SwipeRefreshLayout.OnRefr
         getListViewStateProvider()?.apply {
             liveData.observe(viewLifecycleOwner, Observer {
                 setData(it)
+                setEmptyViewState()
             })
             loadingLiveData.observe(viewLifecycleOwner, Observer {
                 setLoadingState(it)
@@ -55,7 +56,10 @@ abstract class BaseListFragment<T> : DaggerFragment(), SwipeRefreshLayout.OnRefr
 
         when (state) {
             is ViewLoadingState.Loading -> refreshLayout.isRefreshing = true
-            is ViewLoadingState.Success -> refreshLayout.isRefreshing = false
+            is ViewLoadingState.Success -> {
+                refreshLayout.isRefreshing = false
+                setEmptyViewState()
+            }
             is ViewLoadingState.Error -> {
                 refreshLayout.isRefreshing = false
                 val view = view
@@ -65,6 +69,14 @@ abstract class BaseListFragment<T> : DaggerFragment(), SwipeRefreshLayout.OnRefr
                             onRefresh()
                         }.show()
             }
+        }
+    }
+
+    protected open fun setEmptyViewState() {
+        if (adapter.isEmpty()) {
+            tvEmptyView.visibility = View.VISIBLE
+        } else {
+            tvEmptyView.visibility = View.GONE
         }
     }
 

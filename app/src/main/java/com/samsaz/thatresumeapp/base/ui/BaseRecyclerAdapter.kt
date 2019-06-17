@@ -16,4 +16,8 @@ abstract class BaseRecyclerAdapter<T, VH : RecyclerView.ViewHolder> : RecyclerVi
         return list[position]
     }
 
+    fun isEmpty(): Boolean {
+        return list.isEmpty()
+    }
+
 }

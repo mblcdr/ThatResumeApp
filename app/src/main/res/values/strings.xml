@@ -5,4 +5,5 @@
     <string name="tryAgain">Try Again</string>
     <string name="title_experience">Experience</string>
     <string name="item_search">Search</string>
+    <string name="noItemFound">No Item Found!</string>
 </resources>
