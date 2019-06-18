@@ -1,7 +1,6 @@
 package com.samsaz.thatresumeapp.skill
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.nhaarman.mockitokotlin2.mock
 import com.samsaz.shared.data.CacheMode
 import com.samsaz.shared.util.CoroutineDispatchers
 import com.samsaz.shared.util.Result
