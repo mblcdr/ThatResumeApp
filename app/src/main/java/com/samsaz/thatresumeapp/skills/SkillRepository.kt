@@ -3,15 +3,17 @@ package com.samsaz.thatresumeapp.skills
 import com.samsaz.shared.util.CoroutineDispatchers
 import com.samsaz.thatresumeapp.data.BaseCacheRepository
 import com.samsaz.thatresumeapp.model.Skill
+import com.samsaz.thatresumeapp.util.NetworkHelper
 import kotlinx.coroutines.withContext
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Named
 
 class SkillRepository @Inject constructor(
+    networkHelper: NetworkHelper,
     @Named("remote") override val remoteDataSource: SkillDataSource,
     @Named("assets") override val assetsDataSource: SkillDataSource
-) : BaseCacheRepository<List<Skill>>() {
+) : BaseCacheRepository<List<Skill>>(networkHelper) {
 
     suspend fun filterData(data: List<Skill>, dispatchers: CoroutineDispatchers, filter: String?):
             List<Skill> {

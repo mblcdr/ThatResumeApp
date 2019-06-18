@@ -4,8 +4,9 @@ import com.samsaz.shared.data.CacheMode
 import com.samsaz.shared.data.DataSource
 import com.samsaz.shared.util.Result
 import com.samsaz.thatresumeapp.base.ui.ViewLoadingState
+import com.samsaz.thatresumeapp.util.NetworkHelper
 
-abstract class BaseCacheRepository<T> {
+abstract class BaseCacheRepository<T>(val networkHelper: NetworkHelper) {
     protected abstract val remoteDataSource: DataSource<T>
     protected abstract val assetsDataSource: DataSource<T>
 
@@ -28,7 +29,7 @@ abstract class BaseCacheRepository<T> {
             dataStateListener.onDataChange(networkResult.data)
             dataStateListener.onStateChange(ViewLoadingState.Success)
         } else {
-            dataStateListener.onStateChange(ViewLoadingState.Error("Connection Error"))
+            dataStateListener.onStateChange(ViewLoadingState.Error(networkHelper.getNetworkError()))
         }
     }
 }

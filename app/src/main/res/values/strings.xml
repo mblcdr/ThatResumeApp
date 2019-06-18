@@ -6,4 +6,6 @@
     <string name="title_experience">Experience</string>
     <string name="item_search">Search</string>
     <string name="noItemFound">No Item Found!</string>
+    <string name="connectionError">Connection Error</string>
+    <string name="youAreOffline">You are offline</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.samsaz.thatresumeapp.skill
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.nhaarman.mockitokotlin2.mock
 import com.samsaz.shared.data.CacheMode
 import com.samsaz.shared.util.CoroutineDispatchers
 import com.samsaz.shared.util.Result
@@ -10,6 +11,7 @@ import com.samsaz.thatresumeapp.skills.SkillDataSource
 import com.samsaz.thatresumeapp.skills.SkillRepository
 import com.samsaz.thatresumeapp.skills.SkillViewModel
 import com.samsaz.thatresumeapp.util.provideFakeCoroutineDispatchers
+import com.samsaz.thatresumeapp.util.provideFakeNetworkHelper
 import com.samsaz.thatresumeapp.util.provideNoDelayCoroutineDispatchers
 import com.samsaz.thatresumeapp.util.testGetValue
 import org.junit.Assert.assertEquals
@@ -41,7 +43,7 @@ class SkillViewModelTest {
             }
         }
 
-        val repo = SkillRepository(dataSource, dataSource)
+        val repo = SkillRepository(provideFakeNetworkHelper(), dataSource, dataSource)
 
         return SkillViewModel(dispatchers, repo)
     }

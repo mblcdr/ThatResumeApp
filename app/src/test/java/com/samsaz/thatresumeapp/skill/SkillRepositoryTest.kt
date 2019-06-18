@@ -4,13 +4,14 @@ import com.nhaarman.mockitokotlin2.mock
 import com.samsaz.thatresumeapp.model.Skill
 import com.samsaz.thatresumeapp.skills.SkillRepository
 import com.samsaz.thatresumeapp.util.provideFakeCoroutineDispatchers
+import com.samsaz.thatresumeapp.util.provideFakeNetworkHelper
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class SkillRepositoryTest {
 
-    private val repo: SkillRepository = SkillRepository(mock(), mock())
+    private val repo: SkillRepository = SkillRepository(provideFakeNetworkHelper(), mock(), mock())
     private val testList = mutableListOf<Skill>().apply {
         for (i in 0..9) {
             add(Skill("Skill-$i", null, "Desc-$i", null))

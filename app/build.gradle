@@ -24,6 +24,14 @@ android {
         targetCompatibility = "8"
         sourceCompatibility = "8"
     }
+    sourceSets {
+        androidTest {
+            java.srcDirs += "src/testShared/java"
+        }
+        test {
+            java.srcDirs += "src/testShared/java"
+        }
+    }
 }
 
 dependencies {
@@ -70,6 +78,12 @@ dependencies {
     testImplementation "org.mockito:mockito-core:$mockito_version"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlin_version"
     testImplementation "androidx.arch.core:core-testing:$lifecycleTest_version"
+
     androidTestImplementation "androidx.test.ext:junit:$androidx_test_version"
+    androidTestImplementation "androidx.test:rules:$androidx_test_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+    androidTestImplementation "org.mockito:mockito-core:$mockito_version"
+    androidTestImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlin_version"
+    androidTestImplementation "org.mockito:mockito-android:$mockito_version"
+    androidTestImplementation "androidx.arch.core:core-testing:$lifecycleTest_version"
 }
