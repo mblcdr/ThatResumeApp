@@ -2,10 +2,26 @@
   "name": "Hamid Moazzami",
   "imageLink": "https://s.gravatar.com/avatar/51ffe79e8afc81e497b52516ee9dc93b?s=400",
   "occupation": "Mobile App Developer",
-  "socialLinks": [
+  "socials": [
     {
-      "image": null,
-      "link": "http://www.google.com"
+      "name": "LinkedIn",
+      "imageLink": "https://thatresumeapp.samsaz.com/images/social/linkedin.png",
+      "link": "https://www.linkedin.com/in/mblcdr"
+    },
+    {
+      "name": "Github",
+      "imageLink": "https://thatresumeapp.samsaz.com/images/social/github.png",
+      "link": "https://www.github.com/mblcdr"
+    },
+    {
+      "name": "StackOverflow",
+      "imageLink": "https://thatresumeapp.samsaz.com/images/social/stackoverflow.png",
+      "link": "https://stackoverflow.com/users/3126228/avsector"
+    },
+    {
+      "name": "Twitter",
+      "imageLink": "https://thatresumeapp.samsaz.com/images/social/twitter.png",
+      "link": "https://www.twitter.com/mblcdr"
     }
   ],
   "aboutMe": "I am a passionate mobile app developer who likes to create amazing stuff. I love the challenges that come with software development. Chasing down notorious bugs and overcoming architectural difficulties. I like to share what I know and I believe in the progress of the whole team. Also a dreamer. My motto: Write an extension for the class of your dreams."

@@ -8,4 +8,5 @@
     <string name="noItemFound">No Item Found!</string>
     <string name="connectionError">Connection Error</string>
     <string name="youAreOffline">You are offline</string>
+    <string name="noBrowserInstalled">No browser found to open this link</string>
 </resources>
