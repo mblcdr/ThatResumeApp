@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">That Resume App</string>
-    <string name="title_about_me">About Me</string>
-    <string name="title_skills">Skills</string>
+    <string name="appName">That Resume App</string>
+    <string name="titleAboutMe">About Me</string>
+    <string name="titleExperience">Experience</string>
+    <string name="titleSkills">Skills</string>
     <string name="tryAgain">Try Again</string>
-    <string name="title_experience">Experience</string>
-    <string name="item_search">Search</string>
+    <string name="itemSearch">Search</string>
     <string name="noItemFound">No Item Found!</string>
     <string name="connectionError">Connection Error</string>
     <string name="youAreOffline">You are offline</string>

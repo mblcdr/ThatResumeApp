@@ -4,16 +4,16 @@
     <item
             android:id="@+id/tab_about_me"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="@string/title_about_me"/>
+            android:title="@string/titleAboutMe"/>
 
     <item
             android:id="@+id/tab_experience"
         android:icon="@drawable/ic_business_center_black_24dp"
-            android:title="@string/title_experience"/>
+            android:title="@string/titleExperience"/>
 
     <item
         android:id="@+id/tab_skills"
         android:icon="@drawable/ic_build_black_24dp"
-        android:title="@string/title_skills" />
+        android:title="@string/titleSkills" />
 
 </menu>
