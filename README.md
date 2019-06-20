@@ -10,5 +10,6 @@ That resume app is a demo Android application that is written with the following
   - Unit tests (JUnit, Mockito, Androidx.test)
   - UI tests (Espresso, Mockito-Android)
   - Android app bundles (Instant app)
+  - Travis CI
 
 The app is available on [GooglePlay](https://play.google.com/store/apps/details?id=com.samsaz.thatresumeapp). You can try it as an instant app.
