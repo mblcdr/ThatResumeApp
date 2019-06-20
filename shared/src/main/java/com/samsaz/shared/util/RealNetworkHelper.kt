@@ -1,8 +1,8 @@
-package com.samsaz.thatresumeapp.util
+package com.samsaz.shared.util
 
 import android.content.Context
 import android.net.ConnectivityManager
-import com.samsaz.thatresumeapp.R
+import com.samsaz.shared.R
 import javax.inject.Inject
 
 /**
@@ -10,14 +10,17 @@ import javax.inject.Inject
  * Created and maintained by Hamid Moazzami
  */
 
-open class NetworkHelper @Inject constructor(val context: Context) {
+class RealNetworkHelper @Inject constructor(val context: Context) :
+    NetworkHelper {
 
     val connectivityManager: ConnectivityManager = context
         .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-    open fun isConnected(): Boolean = connectivityManager.activeNetworkInfo?.isConnected ?: false
+    override fun isConnected(): Boolean {
+        return connectivityManager.activeNetworkInfo?.isConnected ?: false
+    }
 
-    open fun getNetworkError(): String = if (isConnected()) {
+    override fun getNetworkError(): String = if (isConnected()) {
         context.getString(R.string.connectionError)
     } else {
         context.getString(R.string.youAreOffline)

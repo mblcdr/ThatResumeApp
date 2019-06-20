@@ -1,8 +1,8 @@
 package com.samsaz.thatresumeapp.aboutme
 
+import com.samsaz.shared.util.NetworkHelper
 import com.samsaz.thatresumeapp.data.BaseCacheRepository
 import com.samsaz.thatresumeapp.model.AboutMe
-import com.samsaz.thatresumeapp.util.NetworkHelper
 import javax.inject.Inject
 import javax.inject.Named
 

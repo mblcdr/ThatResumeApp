@@ -5,7 +5,7 @@ import com.samsaz.shared.data.CacheMode
 import com.samsaz.shared.data.DataSource
 import com.samsaz.shared.util.Result
 import com.samsaz.thatresumeapp.base.ui.ViewLoadingState
-import com.samsaz.thatresumeapp.util.provideFakeNetworkHelper
+import com.samsaz.thatresumeapp.util.FakeNetworkHelper
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -39,7 +39,7 @@ class BaseCacheRepositoryTest {
         assetsDataSource: DataSource<Int>
     ):
             BaseCacheRepository<Int> {
-        return object : BaseCacheRepository<Int>(provideFakeNetworkHelper()) {
+        return object : BaseCacheRepository<Int>(FakeNetworkHelper()) {
             override val remoteDataSource: DataSource<Int> = remoteDataSource
             override val assetsDataSource: DataSource<Int> = assetsDataSource
         }
