@@ -7,6 +7,9 @@ import com.samsaz.thatresumeapp.base.ui.ListViewStateProvider
 import com.samsaz.thatresumeapp.base.ui.ViewLoadingState
 import com.samsaz.thatresumeapp.data.DataStateListener
 import com.samsaz.thatresumeapp.model.Skill
+import com.samsaz.thatresumeapp.util.analytics.AnalyticsConsts
+import com.samsaz.thatresumeapp.util.analytics.AnalyticsConsts.Params.QUERY
+import com.samsaz.thatresumeapp.util.analytics.AnalyticsHelper
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -14,7 +17,8 @@ import javax.inject.Inject
 
 class SkillViewModel @Inject constructor(
     dispatchers: CoroutineDispatchers,
-    private val repository: SkillRepository
+    private val repository: SkillRepository,
+    private val analyticsHelper: AnalyticsHelper
 ) : BaseViewModel(dispatchers), ListViewStateProvider<Skill>, DataStateListener<List<Skill>> {
 
     companion object {
@@ -51,6 +55,7 @@ class SkillViewModel @Inject constructor(
         lastFilterJob = launch {
             if (debounce)
                 delay(DEBOUNCE_TIME)
+            logEvent()
             val filteredList = repository.filterData(latestData, dispatchers, filter)
             liveData.value = filteredList
         }
@@ -59,5 +64,10 @@ class SkillViewModel @Inject constructor(
     fun onSearchQuery(newText: String?) {
         filter = newText
         filterList(true)
+    }
+
+    private fun logEvent() {
+        filter ?: return
+        analyticsHelper.sendEvent(AnalyticsConsts.Events.SEARCH, mapOf(QUERY to (filter ?: "")))
     }
 }

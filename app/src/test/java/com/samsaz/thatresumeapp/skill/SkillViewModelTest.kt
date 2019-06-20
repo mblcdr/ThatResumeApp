@@ -9,10 +9,7 @@ import com.samsaz.thatresumeapp.model.Skill
 import com.samsaz.thatresumeapp.skills.SkillDataSource
 import com.samsaz.thatresumeapp.skills.SkillRepository
 import com.samsaz.thatresumeapp.skills.SkillViewModel
-import com.samsaz.thatresumeapp.util.FakeNetworkHelper
-import com.samsaz.thatresumeapp.util.provideFakeCoroutineDispatchers
-import com.samsaz.thatresumeapp.util.provideNoDelayCoroutineDispatchers
-import com.samsaz.thatresumeapp.util.testGetValue
+import com.samsaz.thatresumeapp.util.*
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Rule
@@ -44,7 +41,7 @@ class SkillViewModelTest {
 
         val repo = SkillRepository(FakeNetworkHelper(), dataSource, dataSource)
 
-        return SkillViewModel(dispatchers, repo)
+        return SkillViewModel(dispatchers, repo, FakeAnalyticsHelper())
     }
 
     @Test

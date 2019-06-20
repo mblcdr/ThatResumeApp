@@ -4,6 +4,7 @@ import com.samsaz.shared.di.module.SharedModule
 import com.samsaz.shared.di.viewmodel.ViewModelModule
 import com.samsaz.thatresumeapp.MyApplication
 import com.samsaz.thatresumeapp.data.ApiModule
+import com.samsaz.thatresumeapp.util.analytics.AnalyticsModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -16,7 +17,8 @@ import javax.inject.Singleton
     ViewModelModule::class,
     ActivityBindingModule::class,
     ApiModule::class,
-    SharedModule::class]
+    SharedModule::class,
+    AnalyticsModule::class]
 )
 interface AppComponent: AndroidInjector<MyApplication> {
 
