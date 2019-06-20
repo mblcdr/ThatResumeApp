@@ -79,7 +79,11 @@ class AboutMeFragment : DaggerFragment() {
     }
 
     private fun addSocialIcons(socials: Array<Social>?) {
-        socials ?: return
+        if (socials.isNullOrEmpty()) {
+            socialNetworksLayout.visibility = View.GONE
+            return
+        }
+
         socialNetworksLayout.removeAllViews()
         val color = ContextCompat.getColor(requireContext(), R.color.socialTint)
         val size = resources.getDimensionPixelSize(R.dimen.socialIconSize)
@@ -99,5 +103,6 @@ class AboutMeFragment : DaggerFragment() {
             socialNetworksLayout.addView(image)
             GlideApp.with(image).load(social.imageLink).into(image)
         }
+        socialNetworksLayout.visibility = View.VISIBLE
     }
 }
