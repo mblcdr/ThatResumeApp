@@ -73,12 +73,19 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide_version"
     kapt "com.github.bumptech.glide:compiler:$glide_version"
 
+    /* Firebase */
+    implementation 'com.google.firebase:firebase-core:17.0.0'
+
+    /* Crashlytics */
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
+
     /* Test */
     testImplementation "junit:junit:$junit_version"
     testImplementation "org.mockito:mockito-core:$mockito_version"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlin_version"
     testImplementation "androidx.arch.core:core-testing:$lifecycleTest_version"
 
+    /* Android Test */
     androidTestImplementation "androidx.test.ext:junit:$androidx_test_version"
     androidTestImplementation "androidx.test:rules:$androidx_test_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
@@ -86,4 +93,9 @@ dependencies {
     androidTestImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlin_version"
     androidTestImplementation "org.mockito:mockito-android:$mockito_version"
     androidTestImplementation "androidx.arch.core:core-testing:$lifecycleTest_version"
+}
+
+if (file("google-services.json").exists()) {
+    apply plugin: 'com.google.gms.google-services'
+    apply plugin: 'io.fabric'
 }
