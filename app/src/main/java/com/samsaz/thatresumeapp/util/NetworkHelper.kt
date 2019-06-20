@@ -15,9 +15,9 @@ open class NetworkHelper @Inject constructor(val context: Context) {
     val connectivityManager: ConnectivityManager = context
         .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-    fun isConnected(): Boolean = connectivityManager.activeNetworkInfo?.isConnected ?: false
+    open fun isConnected(): Boolean = connectivityManager.activeNetworkInfo?.isConnected ?: false
 
-    fun getNetworkError(): String = if (isConnected()) {
+    open fun getNetworkError(): String = if (isConnected()) {
         context.getString(R.string.connectionError)
     } else {
         context.getString(R.string.youAreOffline)
