@@ -7,11 +7,6 @@ import com.samsaz.shared.util.Result
 import com.samsaz.thatresumeapp.model.Experience
 import javax.inject.Inject
 
-/**
- * Copyright 2019 Oddrun co.
- * Created and maintained by Hamid Moazzami
- */
-
 class ExperienceAssetDataSource @Inject constructor(
     val jsonParser: MyJsonParser,
     val assets: AssetManager

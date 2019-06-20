@@ -6,11 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import java.util.concurrent.atomic.AtomicBoolean
 
-/**
- * Copyright 2019 Oddrun co.
- * Created and maintained by Hamid Moazzami
- */
-
 class SingleLiveEvent<T>: MutableLiveData<T>() {
 
     private val mPending = AtomicBoolean(false)

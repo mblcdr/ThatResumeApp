@@ -5,11 +5,6 @@ import android.net.ConnectivityManager
 import com.samsaz.shared.R
 import javax.inject.Inject
 
-/**
- * Copyright 2019 Oddrun co.
- * Created and maintained by Hamid Moazzami
- */
-
 class RealNetworkHelper @Inject constructor(val context: Context) :
     NetworkHelper {
 

@@ -2,18 +2,12 @@ package com.samsaz.thatresumeapp.util
 
 import android.view.View
 import androidx.annotation.NonNull
-import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.recyclerview.widget.RecyclerView
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.BoundedMatcher
+import androidx.test.espresso.matcher.ViewMatchers
 import org.hamcrest.Description
 import org.hamcrest.Matcher
-
-
-/**
- * Copyright 2019 Oddrun co.
- * Created and maintained by Hamid Moazzami
- */
 
 fun matchesVisible() = matches(ViewMatchers.withEffectiveVisibility(
     ViewMatchers.Visibility.VISIBLE))

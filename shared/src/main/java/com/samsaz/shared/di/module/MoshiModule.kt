@@ -5,10 +5,6 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-/**
- * Copyright 2019 Oddrun co.
- * Created and maintained by Hamid Moazzami
- */
 @Module
 class MoshiModule {
 
