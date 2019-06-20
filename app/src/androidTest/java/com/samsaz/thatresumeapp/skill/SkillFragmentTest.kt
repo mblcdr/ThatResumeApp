@@ -17,14 +17,14 @@ import com.nhaarman.mockitokotlin2.whenever
 import com.samsaz.shared.util.Result
 import com.samsaz.thatresumeapp.R
 import com.samsaz.thatresumeapp.model.Skill
-import com.samsaz.thatresumeapp.test.FragmentTestActivity
 import com.samsaz.thatresumeapp.skills.SkillDataSource
 import com.samsaz.thatresumeapp.skills.SkillFragment
 import com.samsaz.thatresumeapp.skills.SkillRepository
 import com.samsaz.thatresumeapp.skills.SkillViewModel
+import com.samsaz.thatresumeapp.test.FragmentTestActivity
+import com.samsaz.thatresumeapp.util.FakeNetworkHelper
 import com.samsaz.thatresumeapp.util.atPosition
 import com.samsaz.thatresumeapp.util.matchesVisible
-import com.samsaz.thatresumeapp.util.provideFakeNetworkHelper
 import com.samsaz.thatresumeapp.util.provideNoDelayCoroutineDispatchers
 import kotlinx.coroutines.runBlocking
 import org.junit.Rule
@@ -61,8 +61,7 @@ class SkillFragmentTest {
     fun inject(fragment: SkillFragment) {
         fragment.viewModelFactory = object: ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                val networkHelper = provideFakeNetworkHelper()
-                val repo = SkillRepository(networkHelper, remoteDataSource, assetsDataSource)
+                val repo = SkillRepository(FakeNetworkHelper(), remoteDataSource, assetsDataSource)
                 return SkillViewModel(provideNoDelayCoroutineDispatchers(), repo) as T
             }
         }

@@ -2,9 +2,9 @@ package com.samsaz.thatresumeapp.data
 
 import com.samsaz.shared.data.CacheMode
 import com.samsaz.shared.data.DataSource
+import com.samsaz.shared.util.NetworkHelper
 import com.samsaz.shared.util.Result
 import com.samsaz.thatresumeapp.base.ui.ViewLoadingState
-import com.samsaz.thatresumeapp.util.NetworkHelper
 
 abstract class BaseCacheRepository<T>(val networkHelper: NetworkHelper) {
     protected abstract val remoteDataSource: DataSource<T>

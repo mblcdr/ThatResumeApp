@@ -1,14 +1,13 @@
 package com.samsaz.thatresumeapp.util
 
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.mock
+import com.samsaz.shared.util.NetworkHelper
 
 /**
  * Copyright 2019 Oddrun co.
  * Created and maintained by Hamid Moazzami
  */
 
-fun provideFakeNetworkHelper() = mock<NetworkHelper> {
-    on { isConnected() } doReturn true
-    on { getNetworkError() } doReturn "Connection Error"
+class FakeNetworkHelper : NetworkHelper {
+    override fun isConnected() = true
+    override fun getNetworkError() = "Connection Error"
 }

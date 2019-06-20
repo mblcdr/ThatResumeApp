@@ -1,9 +1,9 @@
 package com.samsaz.thatresumeapp.skills
 
 import com.samsaz.shared.util.CoroutineDispatchers
+import com.samsaz.shared.util.NetworkHelper
 import com.samsaz.thatresumeapp.data.BaseCacheRepository
 import com.samsaz.thatresumeapp.model.Skill
-import com.samsaz.thatresumeapp.util.NetworkHelper
 import kotlinx.coroutines.withContext
 import java.util.*
 import javax.inject.Inject
