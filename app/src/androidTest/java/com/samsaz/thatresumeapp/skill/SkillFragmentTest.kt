@@ -22,10 +22,7 @@ import com.samsaz.thatresumeapp.skills.SkillFragment
 import com.samsaz.thatresumeapp.skills.SkillRepository
 import com.samsaz.thatresumeapp.skills.SkillViewModel
 import com.samsaz.thatresumeapp.test.FragmentTestActivity
-import com.samsaz.thatresumeapp.util.FakeNetworkHelper
-import com.samsaz.thatresumeapp.util.atPosition
-import com.samsaz.thatresumeapp.util.matchesVisible
-import com.samsaz.thatresumeapp.util.provideNoDelayCoroutineDispatchers
+import com.samsaz.thatresumeapp.util.*
 import kotlinx.coroutines.runBlocking
 import org.junit.Rule
 import org.junit.Test
@@ -47,8 +44,9 @@ class SkillFragmentTest {
     }
 
     @get:Rule
-    val activityRule = object: ActivityTestRule<FragmentTestActivity>(
-        FragmentTestActivity::class.java) {
+    val activityRule = object : ActivityTestRule<FragmentTestActivity>(
+        FragmentTestActivity::class.java
+    ) {
         override fun afterActivityLaunched() = runOnUiThread {
             activity.startFragment(fragment, this@SkillFragmentTest::inject)
         }
@@ -59,10 +57,15 @@ class SkillFragmentTest {
 
     @Suppress("UNCHECKED_CAST")
     fun inject(fragment: SkillFragment) {
-        fragment.viewModelFactory = object: ViewModelProvider.Factory {
+        val analyticsHelper = FakeAnalyticsHelper()
+        fragment.analyticsHelper = analyticsHelper
+        fragment.viewModelFactory = object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 val repo = SkillRepository(FakeNetworkHelper(), remoteDataSource, assetsDataSource)
-                return SkillViewModel(provideNoDelayCoroutineDispatchers(), repo) as T
+                return SkillViewModel(
+                    provideNoDelayCoroutineDispatchers(), repo,
+                    analyticsHelper
+                ) as T
             }
         }
     }
@@ -94,8 +97,14 @@ class SkillFragmentTest {
 
         vi.perform(typeText("Skill-2"))
 
-        onView(withId(R.id.rvList)).check(matches(atPosition(0,
-            hasDescendant(withText("Skill-2")))))
+        onView(withId(R.id.rvList)).check(
+            matches(
+                atPosition(
+                    0,
+                    hasDescendant(withText("Skill-2"))
+                )
+            )
+        )
     }
 
     @Test
@@ -107,12 +116,24 @@ class SkillFragmentTest {
         onView(isAssignableFrom(AppCompatAutoCompleteTextView::class.java))
             .perform(typeText("Skill-2"))
 
-        onView(withId(R.id.rvList)).check(matches(atPosition(0,
-            hasDescendant(withText("Skill-2")))))
+        onView(withId(R.id.rvList)).check(
+            matches(
+                atPosition(
+                    0,
+                    hasDescendant(withText("Skill-2"))
+                )
+            )
+        )
 
         onView(withId(androidx.appcompat.R.id.search_close_btn)).perform(click())
 
-        onView(withId(R.id.rvList)).check(matches(atPosition(0,
-            hasDescendant(withText("Skill-0")))))
+        onView(withId(R.id.rvList)).check(
+            matches(
+                atPosition(
+                    0,
+                    hasDescendant(withText("Skill-0"))
+                )
+            )
+        )
     }
 }
