@@ -1,4 +1,4 @@
-# That Resume App
+# That Resume App [![Build Status](https://travis-ci.org/mblcdr/ThatResumeApp.svg?branch=master)](https://travis-ci.org/mblcdr/ThatResumeApp)
 
 That resume app is a demo Android application that is written with the following principles:
 
