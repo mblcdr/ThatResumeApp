@@ -3,6 +3,7 @@ package com.samsaz.thatresumeapp.skills
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -13,11 +14,15 @@ import com.samsaz.thatresumeapp.base.ui.BaseListFragment
 import com.samsaz.thatresumeapp.base.ui.BaseRecyclerAdapter
 import com.samsaz.thatresumeapp.base.ui.ListViewStateProvider
 import com.samsaz.thatresumeapp.model.Skill
+import com.samsaz.thatresumeapp.util.analytics.AnalyticsHelper
 import javax.inject.Inject
 
 class SkillFragment : BaseListFragment<Skill>() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject
+    lateinit var analyticsHelper: AnalyticsHelper
+
     lateinit var viewModel: SkillViewModel
     private val adapter = SkillAdapter()
 
@@ -26,6 +31,10 @@ class SkillFragment : BaseListFragment<Skill>() {
         setHasOptionsMenu(true)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        analyticsHelper.sendScreenView("Skills", requireActivity())
+    }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(SkillViewModel::class.java)

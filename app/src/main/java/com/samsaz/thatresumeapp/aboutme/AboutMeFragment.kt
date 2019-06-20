@@ -16,6 +16,7 @@ import com.samsaz.thatresumeapp.R
 import com.samsaz.thatresumeapp.model.AboutMe
 import com.samsaz.thatresumeapp.model.Social
 import com.samsaz.thatresumeapp.util.GlideApp
+import com.samsaz.thatresumeapp.util.analytics.AnalyticsHelper
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_about_me.*
 import kotlinx.android.synthetic.main.item_about_me.*
@@ -26,11 +27,22 @@ class AboutMeFragment : DaggerFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject
+    lateinit var analyticsHelper: AnalyticsHelper
     lateinit var viewModel: AboutMeViewModel
     private val circleCrop = CircleCrop()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_about_me, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        analyticsHelper.sendScreenView("AboutMe", requireActivity())
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
