@@ -13,3 +13,6 @@ That resume app is a demo Android application that is written with the following
   - Travis CI
 
 The app is available on [GooglePlay](https://play.google.com/store/apps/details?id=com.samsaz.thatresumeapp). You can try it as an instant app.
+
+### Acknowledgements
+Icon made by [Freepik](https://www.freepik.com) from www.flaticon.com
